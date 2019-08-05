@@ -1,0 +1,23 @@
+par=input()
+out=0
+top=-1
+l=[]
+for i in par:
+    if(i=='(' or i=='[' or i=='{'):
+        l.append(i)
+        out=out+1
+        top=top+1
+        
+    elif (top!=-1):
+        if ((i==')' and l[top]=='(') or (i==']' and l[top]=='[') or (i=='}' and l[top]=='{')):
+            l.pop()
+            top=top-1
+            out=out+1
+    else:
+        break
+if (top==-1 and out==len(par)):
+    print("0")
+elif top>-1 or top==-1:
+    print(out+1)
+else:
+    print("1")
